@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button (click)="abrirPag('tabs/tab2')">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-button>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Donkey Kong</ion-card-title>
+      <ion-card-subtitle>Vice Diddy Kong</ion-card-subtitle>      
+    </ion-card-header>
+    <ion-img src ="/assets/Donkey-Kong.png" id="imgDK"></ion-img>
+    <ion-card-content>
+      Vota em mim vai, nunca te pedi nada...
+    </ion-card-content>
+    <br>
+    <ion-button color="success" expand="block" (click)="voto()">
+      Votar
+    </ion-button>
+  </ion-card>
+
+</ion-content>
