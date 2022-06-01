@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
+import { Candidato } from '../models/Candidato';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-tab2',
@@ -8,27 +10,31 @@ import { NavController, AlertController } from '@ionic/angular';
 })
 export class Tab2Page implements OnInit {
 
-  a = 0
-  b = 0
-  c = 0
-
-  contagem = [
-    { 
-      voto1: this.a,
-      voto2: this.b,
-      voto3: this.c
-    }
-  ]
+  listaVotos: Candidato[] = [];
 
   constructor(
     public alert: AlertController,
-    public nav: NavController
+    public nav: NavController,
+    private storageService: StorageService
     ) {}
   
   ngOnInit(): void {}
 
   abrirPag(x){
     this.nav.navigateForward(x)
+  }
+
+  async buscarCandidatos(){
+    this.listaVotos = await this.storageService.getAll();
+  }
+
+  ionViewDidEnter(){
+    this.buscarCandidatos();
+  }
+
+  async excluirVotos(voto: number){
+    await this.storageService.remove(voto);
+    this.buscarCandidatos();
   }
 
 }
