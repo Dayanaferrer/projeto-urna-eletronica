@@ -30,13 +30,13 @@
     </ion-card-header>
   </ion-card>
 
-  <ion-card *ngFor="let c of contagem">
+  <ion-card>
     <ion-item button (click)="abrirPag('pag1')">
       <ion-label>Megaman X</ion-label>
       <ion-avatar slot="start">
        <ion-img src="/assets/megaman-icon.png"></ion-img>
       </ion-avatar>
-      <ion-badge color="primary" slot="end">{{c.voto1}}</ion-badge>
+      <ion-badge color="primary" slot="end" *ngFor="let v of listaVotos">{{v.voto1}}</ion-badge>
     </ion-item>
 
     <ion-item button (click)="abrirPag('pag2')">
@@ -44,7 +44,7 @@
       <ion-avatar slot="start">
        <ion-img src="/assets/mario-icon.png"></ion-img>
       </ion-avatar>
-      <ion-badge color="primary" slot="end">{{c.voto2}}</ion-badge>
+      <ion-badge color="primary" slot="end">0</ion-badge>
     </ion-item>
 
     <ion-item button (click)="abrirPag('pag3')">
@@ -52,8 +52,12 @@
       <ion-avatar slot="start">
        <ion-img src="/assets/dk-icon.jpg"></ion-img>
       </ion-avatar>
-      <ion-badge color="primary" slot="end">{{c.voto3}}</ion-badge>
+      <ion-badge color="primary" slot="end">0</ion-badge>
     </ion-item>
+
+    <ion-button color="danger" expand="block" (click)="excluirVotos(v.voto1)" *ngFor="let v of listaVotos">
+      Limpar Votos
+    </ion-button>
     
   </ion-card>
   

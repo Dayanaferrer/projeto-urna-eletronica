@@ -14,9 +14,6 @@ export class Pag2Page extends Tab2Page {
       buttons: ['OK']
     });
 
-    this.b = this.b + 1;
-    console.log(this.b)
-
     await alert.present();
   }
 }
